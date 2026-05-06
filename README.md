@@ -1,64 +1,96 @@
-# 🌐 Scaler CLI Cloner
+# <p align="center">🌐 Scaler CLI Cloner</p>
 
-An AI-powered CLI agent that clones websites into pixel-perfect HTML/CSS/JS using **OpenRouter LLMs**.
+<p align="center">
+  <img src="docs/images/hero.png" alt="Scaler CLI Cloner Hero" width="100%">
+</p>
 
-Operates in an agentic loop:  
-`START → THINK → TOOL → OBSERVE → THINK → TOOL → ... → OUTPUT`
-
----
-
-## ✨ Features
-
-- **Agentic loop** — LLM drives itself using tool calls
-- **OpenRouter-powered** — Uses `meta-llama/llama-3.3-70b-instruct` by default
-- **6 built-in tools**: `fetch_page_design`, `create_folder`, `write_file`, `read_file`, `list_files`, `validate_html`
-- **Strict coding rules enforced** via system prompt (no inline styles, no Tailwind, no CSS vars)
-- **Gradient text** animation baked in
-- **Responsive** output (mobile + desktop)
-- Auto-opens the result in your browser on completion
+<p align="center">
+  <img src="https://img.shields.io/badge/OpenRouter-Powered-blue?style=for-the-badge&logo=openai" alt="OpenRouter Powered">
+  <img src="https://img.shields.io/badge/Node.js-v16+-green?style=for-the-badge&logo=nodedotjs" alt="Node.js">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License MIT">
+  <img src="https://img.shields.io/badge/Agentic-Loop-orange?style=for-the-badge" alt="Agentic Loop">
+</p>
 
 ---
 
-## 🚀 Quick Start
+## 📖 Overview
 
-### 1. Get an OpenRouter API Key
-- Go to → **https://openrouter.ai/keys**
+**Scaler CLI Cloner** is an autonomous, AI-powered agent designed to clone websites into high-fidelity, responsive HTML/CSS/JS. Leveraging **OpenRouter's** advanced LLMs, it operates in a continuous agentic loop to think, execute tools, and refine its output until perfection is achieved.
 
-### 2. Set up your `.env`
+> [!TIP]
+> This agent is built specifically for high-fidelity cloning, adhering to strict design principles like no inline styles and responsive-first CSS.
+
+---
+
+## 🖼️ Showcase
+
+<p align="center">
+  <b>Pixel-perfect Light Mode Hero Section</b><br>
+  <img src="docs/images/preview.png" alt="Scaler Clone Preview" width="90%" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+</p>
+
+---
+
+## ✨ Key Features
+
+- 🤖 **Autonomous Agentic Loop**: Self-driven execution (`START → THINK → TOOL → OBSERVE → OUTPUT`).
+- ⚡ **OpenRouter Integration**: Defaulting to the powerful `Llama-3.3-70B` for intelligent design choices.
+- 🛠️ **Swiss Army Knife Tools**: 6 specialized tools for fetching design data, file management, and HTML validation.
+- 🎨 **Premium Aesthetics**: Automatic support for animated gradients, glassmorphism, and modern typography.
+- 📱 **Mobile & Desktop Optimized**: Generates fully responsive code out of the box.
+- 🚀 **One-Shot Auto Mode**: Fully autonomous cloning with a single command.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- An [OpenRouter API Key](https://openrouter.ai/keys)
+
+### 2. Installation
+
+Clone the repository and install dependencies:
+
 ```bash
-# Add to .env:
-OPENROUTER_API_KEY=sk-or-v1-your_key_here
-```
-
-### 3. Install dependencies
-```bash
+git clone https://github.com/Sid13SST/Scaler_CLI_cloner.git
+cd Scaler_CLI_cloner
 npm install
 ```
 
-## 🚀 How to Run
+### 3. Configuration
 
-### 💬 Chat Mode (Default) — *Conversational AI Agent*
-Interact with the agent in natural language, just like Cursor or Windsurf.
+Create a `.env` file in the root directory and add your API key:
+
+```env
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
+
+---
+
+## 🎮 Usage
+
+The Scaler CLI Cloner offers two primary modes of operation:
+
+### 💬 Chat Mode (Conversational)
+Interact with the agent naturally to build or modify your clone.
 ```bash
-# Start the conversational chat
 node src/index.js
 ```
-**Examples of what you can say:**
-- "Clone the Scaler Academy website into a folder called 'scaler_clone'"
-- "Make the hero section have a darker background"
-- "Add a button ripple effect in the script.js file"
+*Try saying:* `"Clone the Scaler Academy website into 'scaler_clone'"`
 
-### 🤖 Auto Mode — *One-Shot Autonomous Clone*
-Let the agent clone the site fully on its own without intervention.
+### 🤖 Auto Mode (Autonomous)
+Let the agent handle everything from start to finish.
 ```bash
-# Clone Scaler Academy autonomously
+# Default Scaler Clone
 node src/index.js --auto
 
-# Clone a specific website autonomously
+# Clone a custom URL
 node src/index.js --auto https://www.interviewbit.com
 ```
 
-### ⚙️ Configuration Flags
+### ⚙️ Command Line Arguments
 | Flag | Description | Default |
 |------|-------------|---------|
 | `--model` | OpenRouter model to use | `meta-llama/llama-3.3-70b-instruct` |
@@ -68,69 +100,45 @@ node src/index.js --auto https://www.interviewbit.com
 
 ---
 
-## 📁 Project Structure
+## 🛠️ Internal Toolkit
 
-```
+The agent uses a sophisticated set of tools to interact with the web and your filesystem:
+
+| Tool | Capability |
+| :--- | :--- |
+| 🔍 `fetch_page_design` | Extracts semantic data, brand colors, and layouts from a URL. |
+| 📁 `create_folder` | Manages project directory structure. |
+| ✍️ `write_file` | Generates clean, formatted HTML, CSS, and JS files. |
+| 📖 `read_file` | Allows the agent to review and refine existing code. |
+| 📂 `list_files` | Provides context on the current project state. |
+| ✅ `validate_html` | Ensures the output meets modern web standards. |
+
+---
+
+## 📂 Project Architecture
+
+```text
 Scaler_CLI_cloner/
 ├── src/
-│   ├── index.js     ← CLI entry point (arg parsing)
-│   ├── agent.js     ← Agentic loop (START → THINK → TOOL → OBSERVE → OUTPUT)
-│   ├── tools.js     ← All tool schemas + implementations
-│   ├── prompts.js   ← System prompt builder
-│   └── logger.js    ← Coloured terminal output
-├── scaler_clone/    ← Generated output (created by the agent)
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── .env             ← Your Groq API key (git-ignored)
-├── .env.example     ← Template
-├── package.json
-└── README.md
+│   ├── index.js     ← CLI entry point
+│   ├── agent.js     ← The Brain (Agentic Loop)
+│   ├── tools.js     ← The Hands (Tool Implementations)
+│   ├── prompts.js   ← The Guidelines (System Prompts)
+│   └── logger.js    ← The Voice (Colored Terminal Feedback)
+├── scaler_clone/    ← Your generated masterpiece
+└── ...
 ```
 
 ---
 
-## 🛠 Available Tools
+## ⚠️ Important Notes
 
-| Tool | Description |
-|------|-------------|
-| `fetch_page_design` | Fetches a URL and extracts headings, nav links, buttons, footer text |
-| `create_folder` | Creates a directory on disk |
-| `write_file` | Writes content to a file (creates parents if needed) |
-| `read_file` | Reads a file for review/refinement |
-| `list_files` | Lists all files in a folder |
-| `validate_html` | Checks HTML for missing tags, charset, viewport, etc. |
+- **Cloning Duration**: Depending on the model and complexity, a full clone typically takes **2-4 minutes**.
+- **Scraper Fallback**: If a site blocks automated access, the agent utilizes its internal knowledge of modern design patterns to generate a faithful representation.
+- **Pure Output**: The generated code is dependency-free HTML/CSS/JS.
 
 ---
 
-## 📤 Output Format
-
-Every agent step prints a JSON card:
-
-```json
-{
-  "step": "THINK | TOOL | OBSERVE | OUTPUT",
-  "content": "What the agent is doing",
-  "tool_name": "write_file",
-  "tool_args": "scaler_clone/index.html"
-}
-```
-
----
-
-## 🤖 Models Recommended (OpenRouter)
-
-| Model | Context | Notes |
-|-------|---------|-------|
-| `meta-llama/llama-3.3-70b-instruct` ← default | 128k | Smartest/Best |
-| `meta-llama/llama-3.1-8b-instruct` | 128k | Cheaper/Faster |
-| `google/gemini-2.0-flash-001` | 1M | High context |
-| `mistralai/mistral-7b-instruct` | 32k | Fast |
-
----
-
-## ⚠️ Notes
-
-- The agent may take **2–4 minutes** depending on model speed and page complexity
-- If the target site blocks scrapers, the agent falls back to Scaler's known design data
-- Generated files are plain HTML/CSS/JS — open `index.html` directly in any browser
+<p align="center">
+  Built with ❤️ by Siddhant Prasad
+</p>
