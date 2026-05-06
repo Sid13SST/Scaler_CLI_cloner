@@ -1,7 +1,7 @@
 # <p align="center">🌐 Scaler CLI Cloner</p>
 
 <p align="center">
-  <img src="docs/images/hero.png" alt="Scaler CLI Cloner Hero" width="100%">
+  <img src="docs/images/hero.png" alt="Scaler CLI Cloner Hero" width="70%">
 </p>
 
 <p align="center">
