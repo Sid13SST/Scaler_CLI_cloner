@@ -1,0 +1,23 @@
+{
+  "name": "scaler-cli-cloner",
+  "version": "1.0.0",
+  "description": "AI-powered CLI agent that clones websites using Groq LLM",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "clone-site": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "clone": "node src/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2",
+    "open": "^10.1.0",
+    "openai": "^6.36.0",
+    "ora": "^8.0.1"
+  }
+}
